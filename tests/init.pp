@@ -13,3 +13,8 @@ class { 'vim' :
   user     => 'vagrant',
   home_dir => '/home/vagrant',
 }
+
+class { 'vim' :
+  user     => 'otheruser',
+  home_dir => '/home/otheruser',
+}
