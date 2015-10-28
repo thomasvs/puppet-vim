@@ -40,9 +40,9 @@ define vim($home_dir) {
     mode  => '0664',
   }
 
- # Concat::Fragment {
- #   target  => "${user}:vimrc",
- # }
+  Concat::Fragment {
+    target  => "${user}:vimrc",
+  }
 
   concat::fragment { "${user}:rc-header":
     target  => "${user}:vimrc",
