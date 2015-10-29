@@ -61,10 +61,15 @@ define vim() {
     content => "if filereadable(glob(\"~/.vimrc.local\"))\n\tsource ~/.vimrc.local\nendif",
   }
 
+<<<<<<< HEAD
   vim::rc { "${user}:syntax on": }
   vim::rc { "${user}:filetype plugin indent on": }
   vim::rc { "${user}:highlight comment ctermfg=darkgray": }
   vim::rc { "${user}::set bg=dark": }
+=======
+  vim::rc { 'syntax on': }
+  vim::rc { 'filetype plugin indent on': }
+>>>>>>> feature-default
 
   Package['vim']
   -> File[
