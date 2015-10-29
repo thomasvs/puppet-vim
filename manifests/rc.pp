@@ -3,20 +3,22 @@
 #
 define vim::rc ($user='', $content='')
 {
+  validate_string($user)
+
   $real_user = $user ? {
-    ''      => regsubst($name, '^([^:]+):.*$', '\1'),
+    ''      => regsubst($title, '^([^:]+):.*$', '\1'),
     default => $user
   }
 
   validate_string($content)
 
   $real_content = $content ? {
-    ''       => regsubst($name, '^[^:]+:(.*)$', '\1'),
+    ''       => regsubst($title, '^[^:]+:(.*)$', '\1'),
     default  => $content
   }
 
-#  concat::fragment { "${real_user}:vimrc-${name}":
-#    target  => "${real_user}:vimrc",
-#    content => "${real_content}\n",
-#  }
+  concat::fragment { "${real_user}:vimrc-${real_content}":
+    target  => "${real_user}:vimrc",
+    content => "${real_content}\n",
+  }
 }
