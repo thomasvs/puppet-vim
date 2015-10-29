@@ -13,6 +13,7 @@ vim { 'vagrant' :
   home_dir => '/home/vagrant',
 }
 
-vim::plugin { 'nerdtree':
-  source => 'https://github.com/scrooloose/nerdtree.git'
+vim::plugin { 'vagrant:nerdtree':
+  home_dir => '/home/vagrant',
+  source   => 'https://github.com/scrooloose/nerdtree.git',
 }
