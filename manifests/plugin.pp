@@ -14,7 +14,7 @@
 # [* source *]
 #   the git repository url to clone the plugin from
 #
-define vim::plugin ($home_dir, $source, $user='', $plugin='') {
+define vim::plugin ($source, $user='', $plugin='') {
   validate_string($user)
 
   $real_user = $user ? {
@@ -28,6 +28,8 @@ define vim::plugin ($home_dir, $source, $user='', $plugin='') {
     ''       => regsubst($title, '^[^:]+:(.*)$', '\1'),
     default  => $plugin
   }
+
+  $home_dir = user_home($real_user)
 
   vcsrepo { "${home_dir}/.vim/bundle/${plugin}":
     ensure   => present,
