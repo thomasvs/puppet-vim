@@ -3,5 +3,6 @@ vim
 
 concat/
 stdlib/
+user/
 vcsrepo/
 wget/
