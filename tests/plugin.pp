@@ -9,8 +9,9 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
-vim { 'vagrant':
+vim { 'vagrant' :
 }
 
-vim { 'otheruser':
+vim::plugin { 'vagrant:nerdtree':
+  source   => 'https://github.com/scrooloose/nerdtree.git',
 }
