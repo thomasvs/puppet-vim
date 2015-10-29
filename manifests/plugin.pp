@@ -31,10 +31,10 @@ define vim::plugin ($source, $user='', $plugin='') {
 
   $home_dir = user_home($real_user)
 
-  vcsrepo { "${home_dir}/.vim/bundle/${plugin}":
+  vcsrepo { "${home_dir}/.vim/bundle/${real_plugin}":
     ensure   => present,
     provider => git,
-    user     => $user,
+    user     => $real_user,
     source   => $source,
   }
 }
