@@ -10,7 +10,6 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 vim { 'vagrant' :
-  home_dir => '/home/vagrant',
 }
 
 vim::plugin { 'vagrant:nerdtree':

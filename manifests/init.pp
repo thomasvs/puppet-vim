@@ -1,5 +1,8 @@
-define vim($home_dir) {
-  $user = $name
+define vim() {
+
+  $user = $title
+
+  $home_dir = user_home($user)
 
   include wget
 
