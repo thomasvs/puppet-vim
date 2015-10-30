@@ -1,3 +1,10 @@
+#
+# Define vim
+#
+# Deploy basic vim configuration for a user.
+#
+# Sets up pathogen for plugins, and some default vim options.
+#
 define vim() {
 
   $user = $title
@@ -54,11 +61,11 @@ define vim() {
   }
 
   vim::rc { "${user}:vimrc-pathogen":
-    content => "execute pathogen#infect()\ncall pathogen#helptags()",
+    content => "\" set up pathogen for plugins\nexecute pathogen#infect()\ncall pathogen#helptags()\n",
   }
 
   vim::rc { "${user}:vimrc-local":
-    content => "if filereadable(glob(\"~/.vimrc.local\"))\n\tsource ~/.vimrc.local\nendif",
+    content => "\" allow adding additional config through .vimrc.local\nif filereadable(glob(\"~/.vimrc.local\"))\n\tsource ~/.vimrc.local\nendif\n",
   }
 
   vim::rc { "${user}:syntax on": }
