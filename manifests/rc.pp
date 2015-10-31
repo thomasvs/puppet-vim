@@ -1,7 +1,7 @@
 #
 # $name can be passed in the format ${user}:${content}
 #
-define vim::rc ($user='', $content='', $source=undef)
+define vim::rc ($user='', $content='', $source=undef, $order=75)
 {
   validate_string($user)
 
@@ -23,6 +23,7 @@ define vim::rc ($user='', $content='', $source=undef)
       ''      => "${real_content}\n",
       default => undef
     },
-    source    => $source
+    source    => $source,
+    order     => $order,
   }
 }
