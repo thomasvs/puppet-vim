@@ -62,7 +62,7 @@ define vim() {
 
   vim::rc { "${user}:vimrc-pathogen":
     content => "\" set up pathogen for plugins\nexecute pathogen#infect()\ncall pathogen#helptags()\n",
-    order => '10',
+    order   => '10',
   }
 
   vim::rc { "${user}:vimrc-local":
