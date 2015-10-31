@@ -1,7 +1,7 @@
 #
 # $name can be passed in the format ${user}:${content}
 #
-define vim::rc ($user='', $content='')
+define vim::rc ($user='', $content='', $source=undef)
 {
   validate_string($user)
 
@@ -18,7 +18,11 @@ define vim::rc ($user='', $content='')
   }
 
   concat::fragment { "${real_user}:vimrc-${real_content}":
-    target  => "${real_user}:vimrc",
-    content => "${real_content}\n",
+    target    => "${real_user}:vimrc",
+    content   => $source ? {
+      ''      => "${real_content}\n",
+      default => undef
+    },
+    source    => $source
   }
 }
