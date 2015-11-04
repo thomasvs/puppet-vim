@@ -14,7 +14,7 @@
 # [* source *]
 #   the git repository url to clone the plugin from
 #
-define vim::plugin ($source, $user='', $plugin='') {
+define vim::plugin ($source, $user='', $plugin='', $ensure=present) {
   validate_string($user)
 
   $real_user = $user ? {
@@ -32,7 +32,7 @@ define vim::plugin ($source, $user='', $plugin='') {
   $home_dir = user_home($real_user)
 
   vcsrepo { "${home_dir}/.vim/bundle/${real_plugin}":
-    ensure   => present,
+    ensure   => $ensure,
     provider => git,
     user     => $real_user,
     source   => $source,
