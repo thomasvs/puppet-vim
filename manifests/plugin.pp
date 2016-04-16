@@ -31,10 +31,20 @@ define vim::plugin ($source, $user='', $plugin='', $ensure=present) {
 
   $home_dir = user_home($real_user)
 
-  vcsrepo { "${home_dir}/.vim/bundle/${real_plugin}":
-    ensure   => $ensure,
-    provider => git,
-    user     => $real_user,
-    source   => $source,
+  # See https://tickets.puppetlabs.com/browse/MODULES-731
+  # ensure => absent runs every time and says
+  # Notice: /Stage[main]/Profile::Root::Vim/Amantes::Vim[root]/Vim::Plugin[root:vim-session]/Vcsrepo[/root/.vim/bundle/vim-session]/ensure: created
+  # wrap it in an if instead
+  if $ensure != 'absent' {
+    vcsrepo { "${home_dir}/.vim/bundle/${real_plugin}":
+      ensure   => $ensure,
+      provider => git,
+      user     => $real_user,
+      source   => $source,
+    }
+  } else {
+    file { "${home_dir}/.vim/bundle/${real_plugin}":
+      ensure => absent
+    }
   }
 }
