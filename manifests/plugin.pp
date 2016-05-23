@@ -44,7 +44,8 @@ define vim::plugin ($source, $user='', $plugin='', $ensure=present) {
     }
   } else {
     file { "${home_dir}/.vim/bundle/${real_plugin}":
-      ensure => absent
+      ensure => absent,
+      force  => true,
     }
   }
 }
