@@ -17,7 +17,7 @@ define vim::rc ($user='', $content='')
     default  => $content
   }
 
-  concat::fragment { "${real_user}:vimrc-${real_content}":
+  concat::fragment { "${real_user}:vimrc-${name}":
     target  => "${real_user}:vimrc",
     content => "${real_content}\n",
   }
