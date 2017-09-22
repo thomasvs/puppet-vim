@@ -71,6 +71,7 @@ define vim() {
 
   vim::rc { "${user}:syntax on": }
   vim::rc { "${user}:filetype plugin indent on": }
+  vim::rc { "${user}:set modeline": }
 
   Package['vim']
   -> File[
