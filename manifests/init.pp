@@ -66,6 +66,7 @@ class vim($user, $home_dir) {
 
   vim::rc { 'syntax on': }
   vim::rc { 'filetype plugin indent on': }
+  vim::rc { 'set modeline': }
 
   Package['vim']
   -> File[
