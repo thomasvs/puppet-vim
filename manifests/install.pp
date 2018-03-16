@@ -1,7 +1,7 @@
 class vim::install {
 
   case $::osfamily {
-    RedHat: { $vim_package = 'vim-enhanced' }
+    'RedHat': { $vim_package = 'vim-enhanced' }
     default: { $vim_package = 'vim' }
   }
 
