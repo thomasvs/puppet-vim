@@ -20,6 +20,7 @@ define vim::rc ($user='', $content='', $source=undef)
   concat::fragment { "${real_user}:vimrc-${real_content}":
     target    => "${real_user}:vimrc",
     content   => $source ? {
+      undef   => "${real_content}\n",
       ''      => "${real_content}\n",
       default => undef
     },
