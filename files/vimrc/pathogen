@@ -1,0 +1,4 @@
+" set up pathogen for plugins
+execute pathogen#infect()
+call pathogen#helptags()
+
