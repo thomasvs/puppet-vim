@@ -1,0 +1,4 @@
+" allow adding additional config through .vimrc.local
+if filereadable(glob("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
